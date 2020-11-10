@@ -66,6 +66,36 @@ func Test_UpdateQuality(t *testing.T) {
 				&Item{"Backstage passes to a TAFKAL80ETC concert", -5, 0},
 			},
 		},
+		{
+			name:   "conjured mana cake, 2 rounds",
+			rounds: 2,
+			input: []*Item{
+				&Item{"Conjured Mana Cake", 3, 6},
+			},
+			expected: []*Item{
+				&Item{"Conjured Mana Cake", 1, 2},
+			},
+		},
+		{
+			name:   "conjured mana cake, 10 rounds",
+			rounds: 10,
+			input: []*Item{
+				&Item{"Conjured Mana Cake", 3, 6},
+			},
+			expected: []*Item{
+				&Item{"Conjured Mana Cake", -7, 0},
+			},
+		},
+		{
+			name:   "conjured mana cake, 20 rounds",
+			rounds: 20,
+			input: []*Item{
+				&Item{"Conjured Mana Cake", 3, 6},
+			},
+			expected: []*Item{
+				&Item{"Conjured Mana Cake", -17, 0},
+			},
+		},
 	}
 
 	for n, test := range testData {

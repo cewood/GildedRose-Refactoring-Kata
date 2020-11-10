@@ -23,7 +23,7 @@ func main() {
 		&Item{"Backstage passes to a TAFKAL80ETC concert", 15, 20},
 		&Item{"Backstage passes to a TAFKAL80ETC concert", 10, 49},
 		&Item{"Backstage passes to a TAFKAL80ETC concert", 5, 49},
-		// &Item{"Conjured Mana Cake", 3, 6}, // <-- :O
+		&Item{"Conjured Mana Cake", 3, 6}, // <-- :O
 	}
 
 	days := 2
@@ -54,6 +54,9 @@ func UpdateQuality(items []*Item) {
 		if items[i].name != "Aged Brie" && items[i].name != "Backstage passes to a TAFKAL80ETC concert" {
 			if items[i].quality > 0 {
 				if items[i].name != "Sulfuras, Hand of Ragnaros" {
+					items[i].quality = items[i].quality - 1
+				}
+				if items[i].name == "Conjured Mana Cake" && items[i].quality > 0 {
 					items[i].quality = items[i].quality - 1
 				}
 			}
