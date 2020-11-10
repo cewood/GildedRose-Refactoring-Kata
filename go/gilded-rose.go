@@ -23,7 +23,7 @@ func main() {
 		&Item{"Backstage passes to a TAFKAL80ETC concert", 15, 20},
 		&Item{"Backstage passes to a TAFKAL80ETC concert", 10, 49},
 		&Item{"Backstage passes to a TAFKAL80ETC concert", 5, 49},
-		&Item{"Conjured Mana Cake", 3, 6}, // <-- :O
+		// &Item{"Conjured Mana Cake", 3, 6}, // <-- :O
 	}
 
 	days := 2
