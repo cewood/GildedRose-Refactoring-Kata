@@ -5,6 +5,10 @@ import (
 	"testing"
 )
 
+func Test_Run(t *testing.T) {
+	run(2)
+}
+
 func Test_UpdateQuality(t *testing.T) {
 	var testData = []struct {
 		name     string

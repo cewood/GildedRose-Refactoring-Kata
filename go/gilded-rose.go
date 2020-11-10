@@ -12,6 +12,21 @@ type Item struct {
 }
 
 func main() {
+	days := 2
+	var err error
+	if len(os.Args) > 1 {
+		days, err = strconv.Atoi(os.Args[1])
+		if err != nil {
+			fmt.Println(err.Error())
+			os.Exit(1)
+		}
+		days++
+	}
+
+	run(days)
+}
+
+func run(days int) {
 	fmt.Println("OMGHAI!")
 
 	var items = []*Item{
@@ -24,17 +39,6 @@ func main() {
 		&Item{"Backstage passes to a TAFKAL80ETC concert", 10, 49},
 		&Item{"Backstage passes to a TAFKAL80ETC concert", 5, 49},
 		&Item{"Conjured Mana Cake", 3, 6}, // <-- :O
-	}
-
-	days := 2
-	var err error
-	if len(os.Args) > 1 {
-		days, err = strconv.Atoi(os.Args[1])
-		if err != nil {
-			fmt.Println(err.Error())
-			os.Exit(1)
-		}
-		days++
 	}
 
 	for day := 0; day < days; day++ {
