@@ -88,12 +88,46 @@ impl GildedRose {
 mod tests {
     use super::{GildedRose, Item};
 
-    #[test]
-    pub fn foo() {
-        let items = vec![Item::new("foo", 0, 0)];
-        let mut rose = GildedRose::new(items);
-        rose.update_quality();
+    pub struct TestData {
+        pub name: String,
+        pub rounds: i32,
+        pub input: Vec<Item>,
+        pub expected: Vec<Item>,
+    }
 
-        assert_eq!("fixme", rose.items[0].name);
+    impl TestData {
+        pub fn new(name: impl Into<String>, rounds: i32, input: Vec<Item>, expected: Vec<Item>) -> TestData {
+            TestData {
+                name: name.into(),
+                rounds,
+                input,
+                expected,
+            }
+        }
+    }
+
+    #[test]
+    pub fn main() {
+        let test_cases = vec![
+            TestData::new(
+                "default data set, 1 round",
+                1,
+                vec![
+                    Item::new("+5 Dexterity Vest", 10, 20),
+                    Item::new("Aged Brie", 2, 0),
+                    Item::new("Elixir of the Mongoose", 5, 7),
+                    Item::new("Sulfuras, Hand of Ragnaros", 0, 80),
+                    Item::new("Backstage passes to a TAFKAL80ETC concert", 15, 20),
+                ],
+                vec![
+                    Item::new("+5 Dexterity Vest", 9, 19),
+                    Item::new("Aged Brie", 1, 1),
+                    Item::new("Elixir of the Mongoose", 4, 6),
+                    Item::new("Sulfuras, Hand of Ragnaros", 0, 80),
+                    Item::new("Backstage passes to a TAFKAL80ETC concert", 14, 21),
+                ],
+            ),
+        ];
+
     }
 }
