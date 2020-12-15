@@ -160,6 +160,42 @@ mod tests {
                     Item::new("Backstage passes to a TAFKAL80ETC concert", 14, 21),
                 ],
             ),
+            TestData::new(
+                "default data set, 10 rounds",
+                10,
+                vec![
+                    Item::new("+5 Dexterity Vest", 10, 20),
+                    Item::new("Aged Brie", 2, 0),
+                    Item::new("Elixir of the Mongoose", 5, 7),
+                    Item::new("Sulfuras, Hand of Ragnaros", 0, 80),
+                    Item::new("Backstage passes to a TAFKAL80ETC concert", 15, 20),
+                ],
+                vec![
+                    Item::new("+5 Dexterity Vest", 0, 10),
+                    Item::new("Aged Brie", -8, 18),
+                    Item::new("Elixir of the Mongoose", -5, 0),
+                    Item::new("Sulfuras, Hand of Ragnaros", 0, 80),
+                    Item::new("Backstage passes to a TAFKAL80ETC concert", 5, 35),
+                ],
+            ),
+            TestData::new(
+                "default data set, 20 rounds",
+                20,
+                vec![
+                    Item::new("+5 Dexterity Vest", 10, 20),
+                    Item::new("Aged Brie", 2, 0),
+                    Item::new("Elixir of the Mongoose", 5, 7),
+                    Item::new("Sulfuras, Hand of Ragnaros", 0, 80),
+                    Item::new("Backstage passes to a TAFKAL80ETC concert", 15, 20),
+                ],
+                vec![
+                    Item::new("+5 Dexterity Vest", -10, 0),
+                    Item::new("Aged Brie", -18, 38),
+                    Item::new("Elixir of the Mongoose", -15, 0),
+                    Item::new("Sulfuras, Hand of Ragnaros", 0, 80),
+                    Item::new("Backstage passes to a TAFKAL80ETC concert", -5, 0),
+                ],
+            ),
         ];
 
         run_tests(test_cases)
