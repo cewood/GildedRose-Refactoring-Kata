@@ -56,6 +56,9 @@ impl GildedRose {
                     if item.name != "Sulfuras, Hand of Ragnaros" {
                         item.quality = item.quality - 1;
                     }
+                    if item.name == "Conjured Mana Cake" {
+                        item.quality = item.quality - 1;
+                    }
                 }
             } else {
                 if item.quality < 50 {
@@ -194,6 +197,26 @@ mod tests {
                     Item::new("Elixir of the Mongoose", -15, 0),
                     Item::new("Sulfuras, Hand of Ragnaros", 0, 80),
                     Item::new("Backstage passes to a TAFKAL80ETC concert", -5, 0),
+                ],
+            ),
+            TestData::new(
+                "Conjured items degrade in quality twice as fast as normal items #1",
+                2,
+                vec![
+                    Item::new("Conjured Mana Cake", 3, 6),
+                ],
+                vec![
+                    Item::new("Conjured Mana Cake", 1, 2),
+                ],
+            ),
+            TestData::new(
+                "Conjured items degrade in quality twice as fast as normal items #2",
+                20,
+                vec![
+                    Item::new("Conjured Mana Cake", 3, 6),
+                ],
+                vec![
+                    Item::new("Conjured Mana Cake", -17, 0),
                 ],
             ),
         ];
