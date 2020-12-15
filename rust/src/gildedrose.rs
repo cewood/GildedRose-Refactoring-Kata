@@ -124,6 +124,21 @@ mod tests {
         }
     }
 
+    fn run_rounds(input: &mut GildedRose, rounds: i32) {
+        for _ in 0..rounds {
+            input.update_quality();
+        }
+    }
+
+    fn run_tests(tests: Vec<TestData>) {
+        for test in tests {
+            println!("{:#?}", test.name);
+            let mut rose = GildedRose::new(test.input);
+            run_rounds(&mut rose, test.rounds);
+            assert_eq!(GildedRose::new(test.expected), rose);
+        }
+    }
+
     #[test]
     pub fn main() {
         let test_cases = vec![
@@ -147,5 +162,6 @@ mod tests {
             ),
         ];
 
+        run_tests(test_cases)
     }
 }
