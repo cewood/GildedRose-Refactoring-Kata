@@ -1,4 +1,6 @@
 use std::fmt::{self, Display};
+
+#[derive(Debug)]
 pub struct Item {
     pub name: String,
     pub sell_in: i32,
@@ -21,8 +23,24 @@ impl Display for Item {
     }
 }
 
+#[derive(Debug)]
 pub struct GildedRose {
     pub items: Vec<Item>,
+}
+
+impl PartialEq for GildedRose {
+    fn eq(&self, other: &Self) -> bool {
+        for i in 0..self.items.len() {
+            if self.items[i].name != other.items[i].name {
+                return false
+            } else if self.items[i].sell_in != other.items[i].sell_in {
+                return false
+            } else if self.items[i].quality != other.items[i].quality {
+                return false
+            }
+        }
+        true
+    }
 }
 
 impl GildedRose {
