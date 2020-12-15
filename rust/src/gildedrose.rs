@@ -219,6 +219,96 @@ mod tests {
                     Item::new("Conjured Mana Cake", -17, 0),
                 ],
             ),
+            TestData::new(
+                "Once the sell by date has passed, quality degrades twice as fast #1",
+                15,
+                vec![
+                    Item::new("+5 Dexterity Vest", 10, 20),
+                ],
+                vec![
+                    Item::new("+5 Dexterity Vest", -5, 0),
+                ],
+            ),
+            TestData::new(
+                "Once the sell by date has passed, quality degrades twice as fast #2",
+                5,
+                vec![
+                    Item::new("Conjured Mana Cake", 3, 12),
+                ],
+                vec![
+                    Item::new("Conjured Mana Cake", -2, 0),
+                ],
+            ),
+            TestData::new(
+                "The quality of an item is never negative #1",
+                10,
+                vec![
+                    Item::new("Conjured Mana Cake", 3, 6),
+                ],
+                vec![
+                    Item::new("Conjured Mana Cake", -7, 0),
+                ],
+            ),
+            TestData::new(
+                "The quality of an item is never negative #1",
+                10,
+                vec![
+                    Item::new("Elixir of the Mongoose", 5, 7),
+                ],
+                vec![
+                    Item::new("Elixir of the Mongoose", -5, 0),
+                ],
+            ),
+            TestData::new(
+                "Aged Brie actually increases in quality the older it gets",
+                10,
+                vec![
+                    Item::new("Aged Brie", 2, 0),
+                ],
+                vec![
+                    Item::new("Aged Brie", -8, 18),
+                ],
+            ),
+            TestData::new(
+                "The quality of an item is never more than 50 #1",
+                60,
+                vec![
+                    Item::new("Aged Brie", 2, 0),
+                ],
+                vec![
+                    Item::new("Aged Brie", -58, 50),
+                ],
+            ),
+            TestData::new(
+                "Sulfuras, being a legendary item, never has to be sold or decreases in quality",
+                5,
+                vec![
+                    Item::new("Sulfuras, Hand of Ragnaros", 0, 80),
+                ],
+                vec![
+                    Item::new("Sulfuras, Hand of Ragnaros", 0, 80),
+                ],
+            ),
+            TestData::new(
+                "Backstage passes quality increases as its sell-in value approaches, by 2 when <= 10 days and by 3 when <= 5 days, but quality drops to 0 after the concert #1",
+                5,
+                vec![
+                    Item::new("Backstage passes to a TAFKAL80ETC concert", 15, 20),
+                ],
+                vec![
+                    Item::new("Backstage passes to a TAFKAL80ETC concert", 10, 25),
+                ],
+            ),
+            TestData::new(
+                "Backstage passes quality increases as its sell-in value approaches, by 2 when <= 10 days and by 3 when <= 5 days, but quality drops to 0 after the concert #2",
+                15,
+                vec![
+                    Item::new("Backstage passes to a TAFKAL80ETC concert", 15, 20),
+                ],
+                vec![
+                    Item::new("Backstage passes to a TAFKAL80ETC concert", 0, 50),
+                ],
+            ),
         ];
 
         run_tests(test_cases)
